@@ -1,0 +1,138 @@
+:root {
+  --main-bg: white;
+  --ol-yeller: #ffeb00;
+  --comrade: #ff0000;
+  --blucifer: #3300ff;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-bg);
+  box-sizing: border-box;
+  margin: 3em;
+}
+
+.card {
+  box-sizing: border-box;
+  will-change: opacity;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  min-height: 200px;
+  padding: 10px;
+}
+
+.border-gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(20deg, var(--ol-yeller), var(--comrade) 50%, var(--blucifer) 70%);
+  overflow: hidden;
+}
+
+.border-gradient::before, .border-gradient::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  animation: rotate-color 7s linear infinite;
+}
+
+.border-gradient::before {
+  background: linear-gradient(-20deg, var(--comrade), var(--ol-yeller));
+}
+
+.border-gradient::after {
+  background: linear-gradient(20deg, var(--blucifer), transparent);
+}
+
+main {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-bg);
+  color: #000000;
+  mix-blend-mode: color-dodge;
+  font-size: 10em;
+  font-weight: bolder;
+  font-family: serif;
+  letter-spacing: -0.07em;
+  line-height: .7em;
+  overflow-wrap: anywhere;
+  padding: .3em;
+}
+
+@keyframes rotate-color {
+  0% {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+  }
+  25% {
+    opacity: .7;
+    transform: scaleX(3) scaleY(3); 
+  }
+  50% {
+    opacity: .4;
+    transform: scaleX(1) scaleY(5);
+  }
+  75% {
+    opacity: .8;
+    transform: scaleX(1.3) scaleY(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+  }
+}
+
+input {
+  box-sizing: content-box;
+  width: 100%;
+  height: 100%;
+  max-width: 1500px;
+  border: none;
+  border-bottom: 5px solid;
+  border-top: 5px solid rgb(255 255 255 / 0%);
+  mix-blend-mode: color-dodge;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  font-weight: lighter;
+  font-style: oblique;
+  transition: all .3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-left: 5px solid;
+  border-top: 5px solid;
+  border-right: 5px solid;
+}
+
+input::placeholder {
+  color: black;
+  font-size: .9em;
+}
+
+input:focus::placeholder {
+  opacity: 0;
+}
+
+.card-input {
+  width: 100%;
+  padding: 0;
+  height: 100px;
+  min-height: 100px;
+  align-items: flex-end;
+  height: auto;
+  min-height: auto;
+  margin-top: 4em;
+}

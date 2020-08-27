@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Lava Lamp</title>
     <link rel="stylesheet" href="main.css">
+    <script src="app.js"></script>
   </head>
   <body>
     <!-- Hero card should be a knockout of a lava lamp icon svg -->
 
     <!-- example of gradient border on normal div (works on span?) -->
     <!-- next to that example is an img tag -->
-    <section class="card">
+    <!-- <section class="card">
       <div class="border-gradient"></div>
       <main>Your focus determines your reality.</main>
-    </section>
-    <section class="card card-input">
+    </section> -->
+    <!-- <section class="card card-input">
       <div class="border-gradient"></div>
       <input type="text" placeholder="i spek">
-    </section>
+    </section> -->
+    <!-- example of gradient knockout text -->
+    <hr>
+    <!-- background-clip test -->
     <section class="card">
-
+      <div class="test border--lava">Some testing text</div>
     </section>
     <hr>
-    <!-- example of gradient knockout text -->
+    <!-- mix-blend-mode test -->
     <section class="card">
-
+      <!-- Use JS to check for a class to see how many lava drops to add -->
+      <div class="lava-blend-parent lava-drops-3">
+        <div class="lava-bg"></div>
+        <div class="lava-drop-1"></div>
+        <div class="lava-text">Hello I'm some text</div>
+      </div>
     </section>
     <hr>
     <!-- example of gradient knockout svg and logo -->
@@ -70,7 +80,6 @@
     <section class="card">
 
     </section>
-    <script src="app.js"></script>
   </body>
   <footer>
     <address>Email, twitter, github, etc. MIT licence 2020</address>

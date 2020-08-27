@@ -1,8 +1,12 @@
 :root {
   --main-bg: white;
-  --ol-yeller: #ffeb00;
-  --comrade: #ff0000;
-  --blucifer: #3300ff;
+  /* --lava-color1: #9FD7AD;
+  --lava-color2: #E4B856;
+  --lava-color3: #272727; */
+  --lava-color1: red;
+  --lava-color2: blue;
+  --lava-color3: green;
+  --fallback-lava-color: orange;
 }
 
 body {
@@ -33,11 +37,11 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(20deg, var(--ol-yeller), var(--comrade) 50%, var(--blucifer) 70%);
+  background: linear-gradient(20deg, var(--lava-color1), var(--lava-color2) 50%, var(--lava-color3) 70%);
   overflow: hidden;
 }
 
-.border-gradient::before, .border-gradient::after {
+/* .border-gradient::before, .border-gradient::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -46,11 +50,16 @@ body {
 }
 
 .border-gradient::before {
-  background: linear-gradient(-20deg, var(--comrade), var(--ol-yeller));
+  background: linear-gradient(-20deg, var(--lava-color2), var(--lava-color1));
 }
 
 .border-gradient::after {
-  background: linear-gradient(20deg, var(--blucifer), transparent);
+  background: linear-gradient(20deg, var(--lava-color3), transparent);
+} */
+
+hr {
+  width: 100%;
+  border-style: solid;
 }
 
 main {
@@ -60,7 +69,7 @@ main {
   align-items: center;
   background-color: var(--main-bg);
   color: #000000;
-  mix-blend-mode: color-dodge;
+  mix-blend-mode: color-dodge; /* this here is where it all happens... we should have an alternative */
   font-size: 10em;
   font-weight: bolder;
   font-family: serif;
@@ -68,29 +77,6 @@ main {
   line-height: .7em;
   overflow-wrap: anywhere;
   padding: .3em;
-}
-
-@keyframes rotate-color {
-  0% {
-    opacity: 1;
-    transform: scaleX(1) scaleY(1);
-  }
-  25% {
-    opacity: .7;
-    transform: scaleX(3) scaleY(3); 
-  }
-  50% {
-    opacity: .4;
-    transform: scaleX(1) scaleY(5);
-  }
-  75% {
-    opacity: .8;
-    transform: scaleX(1.3) scaleY(1.5);
-  }
-  100% {
-    opacity: 1;
-    transform: scaleX(1) scaleY(1);
-  }
 }
 
 input {
@@ -135,4 +121,111 @@ input:focus::placeholder {
   height: auto;
   min-height: auto;
   margin-top: 4em;
+}
+
+/* animations */
+@keyframes rotate-color {
+  0% {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+  }
+  25% {
+    opacity: .7;
+    transform: scaleX(3) scaleY(3); 
+  }
+  50% {
+    opacity: .4;
+    transform: scaleX(1) scaleY(5);
+  }
+  75% {
+    opacity: .8;
+    transform: scaleX(1.3) scaleY(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+  }
+}
+
+/* if we want to only add a class, and have the gradient generate, we probably need to then create a div 
+that will wrap around it, or maybe an ::after element could be used.
+Plus maybe a background color on this one in combo. But it all needs to be generated. 
+Which will have to be JS. Let's style it, then turn it into an injection. */
+.border--lava {
+  color: var(--fallback-lava-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.another-test {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(-20deg, var(--lava-color2), var(--lava-color1));
+}
+
+/* I don't think background clip will allow us to animate... */
+/* BUT it is selectable. That's important */
+@supports(background-clip: text) or (-webkit-background-clip: text) {
+
+  .test {
+    background: linear-gradient(-20deg, var(--lava-color2), var(--lava-color1));
+  }
+
+  .border--lava {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+}
+
+
+/* TEST with MIX-BLEND-MODE */
+.lava-blend-parent {
+  background: white;
+  width: auto;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+.lava-blend-parent .lava-text {
+  width: 100%;
+  height: 100%;
+  background: white;
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  mix-blend-mode: lighten;
+  position: relative;
+  align-self: normal;
+}
+
+.lava-blend-parent .lava-bg {
+  background: linear-gradient(-20deg, yellow, var(--lava-color1));
+  width: 100%;
+  height: 100%;
+  align-self: normal;
+  position: absolute;
+}
+
+.lava-blend-parent .lava-drop-1 {
+  position: absolute;
+  background: #16c937;
+  width: 40px;
+  height: 84px;
+  transform: translate(0px, 10px);
+  border-radius: 50%;
+  filter: blur(5px);
+  align-self: normal;
 }

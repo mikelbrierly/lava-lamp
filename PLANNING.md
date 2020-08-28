@@ -11,6 +11,7 @@
   * Hero/Text
   * Form Input
   * Buttons
+  * Spinning Loader w/ fallback
 * CDN Delivery
 
 # Features
@@ -20,4 +21,3 @@
 *  NPM Publish/Github publish
 *  Video Controls
 *  Landing Page
-*  

@@ -213,19 +213,25 @@ Which will have to be JS. Let's style it, then turn it into an injection. */
 
 .lava-blend-parent .lava-bg {
   background: linear-gradient(-20deg, yellow, var(--lava-color1));
-  width: 100%;
-  height: 100%;
-  align-self: normal;
+  
+  /* Should be calced by JS to match the width of the parent element so it can rotate around */
+  width: 250px; 
+  /* Should be calced by JS to match the width of the parent element so it can rotate around (only use if animated)*/
+  height: 250px;
+
   position: absolute;
+  transform: translate(0, -50%);
+  top: 50%;
 }
 
 .lava-blend-parent .lava-drop-1 {
   position: absolute;
   background: #16c937;
-  width: 40px;
-  height: 84px;
-  transform: translate(0px, 10px);
-  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  /* Both of these should be handled by JS too. Or a Keyframe */
+  transform: translate(0px, -39px);
+  border-radius: 50% 30% 50% 36%;
   filter: blur(5px);
   align-self: normal;
 }

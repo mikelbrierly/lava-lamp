@@ -1,3 +1,4 @@
+* TODO: Look at Monochromatic Color Palette from Loriah Pope for how to do an automatic gradient.
 * Create a front-end UI library that gives beautiful, customizable gradients and effects to text, buttons, forms, divs, etc. 
 * The gradients are dynamic and can move and change on your webpage.
 * Colors are customizable, and accessibility options are built-in or reccommended via the console.
